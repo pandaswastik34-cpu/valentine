@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day </title><style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: white;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 70px 20px;
+  text-align: center;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 500px;
+}
+
+button {
+  margin-top: 25px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  background: white;
+  color: #ff4b6e;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* MESSAGE CARD */
+.card {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  margin: auto;
+  line-height: 1.7;
+}
+
+.card h2 {
+  margin-bottom: 15px;
+}
+
+/* PHOTO GALLERY */
+.gallery {
+  max-width: 600px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* LIST */
+.love-list {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.love-list li {
+  margin-bottom: 10px;
+}
+
+/* LOVE QUESTION */
+#yesBtn {
+  margin-right: 12px;
+}
+
+#noBtn {
+  position: relative;
+}
+
+/* YES RESPONSE */
+#loveResponse {
+  display: none;
+}
+
+/* HEARTS */
+.heart {
+  position: fixed;
+  font-size: 20px;
+  animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+/* MOBILE */
+@media (max-width:480px) {
+  .hero h1 { font-size: 1.9rem; }
+}
+</style></head><body><!-- HERO --><section class="hero">
+  <h1>Happy Valentine's Day </h1>
+  <p>
+    A beautiful day to celebrate kindness, happiness, and the wonderful people 
+    who make life more meaningful just by being in it.
+  </p>
+  <button onclick="scrollToMessage()">Open Message </button>
+</section><!-- LOVE MESSAGE --><section id="message">
+  <div class="card">
+    <h2>A Special Message </h2>
+    <p>
+      Today is a reminder of how meaningful it is to have someone who spreads joy,
+      warmth, and positivity wherever they go. Your presence brings comfort,
+      your smile brings light, and your kindness leaves a lasting impression
+      on everyone around you.
+    </p><p>
+  You make ordinary days feel brighter and simple moments feel more special.
+  The way you care, laugh, and bring happiness to the world makes you truly
+  one of a kind.
+</p>
+
+<ul class="love-list">
+  <li> Your smile can brighten any day</li>
+  <li> Your kindness makes people feel valued</li>
+  <li> Your laughter spreads happiness</li>
+  <li> Your presence makes moments memorable</li>
+  <li> You make the world a little more beautiful</li>
+</ul>
+
+<p>
+  May your day be filled with warmth, appreciation, sweet surprises,
+  and all the happiness you bring to others every single day.
+</p>
+
+  </div>
+</section><!-- PHOTO SECTION --><section>
+  <h2>Special Photo </h2>
+  <p>This is a beautiful moment to cherish forever.</p>  <div class="gallery">
+    <img src="photo.jpg" alt="Special Memory">
+  </div>
+</section><!-- LOVE QUESTION --><section>
+  <h2>Will you be my Valentine? </h2>
+  <button id="yesBtn" onclick="yesClicked()">Yes </button>
+  <button id="noBtn" onmouseover="moveNo()">No </button>
+</section><!-- RESPONSE AFTER YES --><section id="loveResponse">
+  <div class="card">
+    <h2>You Said YES! </h2>
+    <p>
+      Today feels a little more special… because you said yes.
+      And that simple word brought so much happiness, warmth, and light.
+    </p><p>
+  You are someone who makes ordinary moments feel magical.
+  Your smile can brighten the dullest day, your kindness makes hearts feel safe,
+  and your presence makes everything feel more meaningful.
+</p>
+
+  </div>
+</section><script>
+
+function scrollToMessage(){
+  document.getElementById("message").scrollIntoView({behavior:"smooth"});
+}
+
+function yesClicked(){
+  document.getElementById("loveResponse").style.display="block";
+  document.getElementById("loveResponse").scrollIntoView({behavior:"smooth"});
+
+  for(let i=0;i<30;i++){
+    createHeart();
+  }
+}
+
+function moveNo(){
+  const btn = document.getElementById("noBtn");
+  btn.style.left = Math.random()*200 - 100 + "px";
+  btn.style.top = Math.random()*200 - 100 + "px";
+}
+
+function createHeart(){
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (Math.random()*25+15)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),4000);
+}
+setInterval(createHeart,400);
+
+</script></body>
+</html>
